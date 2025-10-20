@@ -15,8 +15,15 @@ createRoot(document.getElementById("root")!).render(
         <Route path="auth">
           <Route path="login" element={<LoginPage />} />
         </Route>
-        <Route path="dashboard" element={<DashboardLayout />}>
-          <Route index element={<div>Dashboard Page</div>} />
+        <Route element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<div>Dashboard Page</div>} />
+          <Route path="/hr">
+            <Route path="settings" element={<div>HR Settings Page</div>} />
+            <Route
+              path="administration"
+              element={<div>HR Administration Page</div>}
+            />
+          </Route>
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
