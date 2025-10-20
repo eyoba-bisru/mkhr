@@ -1,11 +1,11 @@
-import { StrictMode } from "react";
+import { StrictMode, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { BrowserRouter, Route, Routes } from "react-router";
-import LoginPage from "./pages/login-page.tsx";
-import NotFound from "./pages/not-found.tsx";
-import DashboardLayout from "./pages/dashboard-layout.tsx";
+const LoginPage = lazy(() => import("./pages/login-page.tsx"));
+const NotFound = lazy(() => import("./pages/not-found.tsx"));
+const DashboardLayout = lazy(() => import("./pages/dashboard-layout.tsx"));
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
