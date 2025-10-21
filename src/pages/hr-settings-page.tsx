@@ -1,4 +1,3 @@
-import { DataTableDemo } from "@/components/table";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,13 +10,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  DownloadIcon,
-  PlusIcon,
-  RefreshCwIcon,
-  Trash2Icon,
-} from "lucide-react";
-import { Link } from "react-router";
+import { lazy } from "react";
+const PostionPage = lazy(() => import("./position-page.tsx"));
 
 export default function HRSettings() {
   return (
@@ -31,35 +25,7 @@ export default function HRSettings() {
           <TabsTrigger value="positions">Positions</TabsTrigger>
           <TabsTrigger value="password">Password</TabsTrigger>
         </TabsList>
-        <TabsContent value="positions">
-          <div className="flex flex-col gap-4">
-            <div className="flex gap-2 justify-end">
-              <Link to="/hr/settings/add_position">
-                <Button className="bg-[#3E9E6C] cursor-pointer hover:bg-[#4ec587]">
-                  {" "}
-                  <PlusIcon /> Add New
-                </Button>
-              </Link>
-              <Button variant="destructive">
-                {" "}
-                <Trash2Icon /> Delete
-              </Button>
-              <Button variant="outline">
-                <DownloadIcon />
-                Export
-              </Button>
-              <Button variant="outline">
-                <RefreshCwIcon />
-                Refresh
-              </Button>
-            </div>
-            <Card>
-              <CardContent className="grid gap-6">
-                <DataTableDemo />
-              </CardContent>
-            </Card>
-          </div>
-        </TabsContent>
+        <PostionPage />
         <TabsContent value="password">
           <Card>
             <CardHeader>
