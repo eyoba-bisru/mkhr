@@ -17,6 +17,7 @@ import {
   RefreshCwIcon,
   Trash2Icon,
 } from "lucide-react";
+import { Link } from "react-router";
 
 export default function HRSettings() {
   return (
@@ -33,10 +34,12 @@ export default function HRSettings() {
         <TabsContent value="positions">
           <div className="flex flex-col gap-4">
             <div className="flex gap-2 justify-end">
-              <Button className="bg-[#3E9E6C]">
-                {" "}
-                <PlusIcon /> Add New
-              </Button>
+              <Link to="/hr/settings/add_position">
+                <Button className="bg-[#3E9E6C] cursor-pointer hover:bg-[#4ec587]">
+                  {" "}
+                  <PlusIcon /> Add New
+                </Button>
+              </Link>
               <Button variant="destructive">
                 {" "}
                 <Trash2Icon /> Delete
