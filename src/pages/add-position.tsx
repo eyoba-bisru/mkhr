@@ -16,10 +16,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "./ui/textarea";
+import { Textarea } from "../components/ui/textarea";
 import { Link } from "react-router";
 
-export default function Position() {
+export default function AddPositionPage() {
   return (
     <div className="w-full p-6">
       <form>

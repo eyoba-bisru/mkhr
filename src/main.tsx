@@ -3,11 +3,12 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { BrowserRouter, Route, Routes } from "react-router";
-const Postion = lazy(() => import("./components/position.tsx"));
+const AddPostionPage = lazy(() => import("./pages/add-position.tsx"));
 const HRSettings = lazy(() => import("./pages/hr-settings-page.tsx"));
 const LoginPage = lazy(() => import("./pages/login-page.tsx"));
 const NotFound = lazy(() => import("./pages/not-found.tsx"));
 const DashboardLayout = lazy(() => import("./layouts/dashboard-layout.tsx"));
+const AddGradePage = lazy(() => import("@/pages/add-grade.tsx"));
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -21,7 +22,8 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/dashboard" element={<div>Dashboard Page</div>} />
           <Route path="/hr">
             <Route path="settings" element={<HRSettings />} />
-            <Route path="settings/add_position" element={<Postion />} />
+            <Route path="settings/add_position" element={<AddPostionPage />} />
+            <Route path="settings/add_grade" element={<AddGradePage />} />
             <Route
               path="administration"
               element={<div>HR Administration Page</div>}
