@@ -15,7 +15,7 @@ export default function BranchesPage() {
     <TabsContent value="branches">
       <div className="flex flex-col gap-4">
         <div className="flex gap-2 justify-end">
-          <Link to="/hr/settings/add_grade">
+          <Link to="/hr/settings/add_branch">
             <Button className="bg-[#3E9E6C] cursor-pointer hover:bg-[#4ec587]">
               {" "}
               <PlusIcon /> Add New

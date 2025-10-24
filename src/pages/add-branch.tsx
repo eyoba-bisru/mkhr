@@ -10,31 +10,22 @@ import {
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router";
 
-export default function AddGradePage() {
+export default function AddBranchPage() {
   return (
     <div className="w-full p-6">
       <form>
         <FieldGroup className="max-w-xl mx-auto">
           <FieldSet>
-            <FieldLegend className="font-bold">Create new grade</FieldLegend>
+            <FieldLegend className="font-bold">Create new branch</FieldLegend>
 
             <FieldGroup className="grid gap-4 grid-cols-2">
               <Field>
-                <FieldLabel htmlFor="grade">Grade Name</FieldLabel>
-                <Input id="grade" placeholder="I" required />
+                <FieldLabel htmlFor="branch">Branch Name</FieldLabel>
+                <Input id="branch" placeholder="MK Addis" required />
               </Field>
               <Field>
-                <FieldLabel htmlFor="rank">Rank</FieldLabel>
-                <Input id="rank" placeholder="1" type="number" required />
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="salary">Salary</FieldLabel>
-                <Input
-                  id="salary"
-                  placeholder="15,000"
-                  type="number"
-                  required
-                />
+                <FieldLabel htmlFor="address">Address</FieldLabel>
+                <Input id="address" placeholder="Addis Ababa" required />
               </Field>
             </FieldGroup>
             <FieldGroup className="mt-4">
