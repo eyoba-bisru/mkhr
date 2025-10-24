@@ -34,35 +34,31 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const data: Grades[] = [
+const data: Branches[] = [
   {
     id: "m5gr84i9",
-    name: "I",
-    rank: 1,
-    salary: 15000,
+    name: "MK Addis",
+    address: "Addis Ababa, Ethiopia",
   },
   {
     id: "3u1reuv4",
-    name: "II",
-    rank: 1,
-    salary: 18000,
+    name: "MK BD",
+    address: "Bahir Dar, Ethiopia",
   },
   {
     id: "derv1ws0",
-    name: "III",
-    rank: 1,
-    salary: 20000,
+    name: "MK GD",
+    address: "Gondar, Ethiopia",
   },
 ];
 
-export type Grades = {
+type Branches = {
   id: string;
   name: string;
-  rank: number;
-  salary: number;
+  address: string;
 };
 
-const columns: ColumnDef<Grades>[] = [
+const columns: ColumnDef<Branches>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -100,31 +96,17 @@ const columns: ColumnDef<Grades>[] = [
     ),
   },
   {
-    accessorKey: "rank",
+    accessorKey: "address",
     header: ({ column }) => (
       <Button
         variant="ghost"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
       >
-        <div>Rank</div> <ArrowUpDown />
+        <div>Address</div> <ArrowUpDown />
       </Button>
     ),
     cell: ({ row }) => (
-      <div className="font-medium">{row.getValue("rank")}</div>
-    ),
-  },
-  {
-    accessorKey: "salary",
-    header: ({ column }) => (
-      <Button
-        variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      >
-        <div>salary</div> <ArrowUpDown />
-      </Button>
-    ),
-    cell: ({ row }) => (
-      <div className="font-medium">{row.getValue("salary")}</div>
+      <div className="font-medium">{row.getValue("address")}</div>
     ),
   },
 
@@ -159,7 +141,7 @@ const columns: ColumnDef<Grades>[] = [
   },
 ];
 
-export function GradesDataTable() {
+export function BranchesDataTable() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []

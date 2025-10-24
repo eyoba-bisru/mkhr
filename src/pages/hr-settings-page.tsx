@@ -1,5 +1,6 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { lazy } from "react";
+const BranchesPage = lazy(() => import("./branches-page.tsx"));
 const GradesPage = lazy(() => import("./grades-page.tsx"));
 const PostionPage = lazy(() => import("./position-page.tsx"));
 
@@ -14,9 +15,11 @@ export default function HRSettings() {
         <TabsList>
           <TabsTrigger value="positions">Positions</TabsTrigger>
           <TabsTrigger value="grades">Grades</TabsTrigger>
+          <TabsTrigger value="branches">Branches</TabsTrigger>
         </TabsList>
         <PostionPage />
         <GradesPage />
+        <BranchesPage />
       </Tabs>
     </div>
   );
