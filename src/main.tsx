@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 const AddScalePage = lazy(() => import("./pages/add-scale.tsx"));
 const AddBranchPage = lazy(() => import("./pages/add-branch.tsx"));
 const AddPostionPage = lazy(() => import("./pages/add-position.tsx"));
+const AddEmpscalePage = lazy(() => import("./pages/add-empscale.tsx"));
 const HRSettings = lazy(() => import("./pages/hr-settings-page.tsx"));
 const LoginPage = lazy(() => import("./pages/login-page.tsx"));
 const NotFound = lazy(() => import("./pages/not-found.tsx"));
@@ -28,6 +29,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="settings/add_grade" element={<AddGradePage />} />
             <Route path="settings/add_branch" element={<AddBranchPage />} />
             <Route path="settings/add_scale" element={<AddScalePage />} />
+            <Route path="settings/add_empscale" element={<AddEmpscalePage />} />
             <Route
               path="administration"
               element={<div>HR Administration Page</div>}
