@@ -38,28 +38,20 @@ const data: Grades[] = [
   {
     id: "m5gr84i9",
     name: "I",
-    rank: 1,
-    salary: 15000,
   },
   {
     id: "3u1reuv4",
     name: "II",
-    rank: 1,
-    salary: 18000,
   },
   {
     id: "derv1ws0",
     name: "III",
-    rank: 1,
-    salary: 20000,
   },
 ];
 
 export type Grades = {
   id: string;
   name: string;
-  rank: number;
-  salary: number;
 };
 
 const columns: ColumnDef<Grades>[] = [
@@ -99,35 +91,6 @@ const columns: ColumnDef<Grades>[] = [
       <div className="font-medium">{row.getValue("name")}</div>
     ),
   },
-  {
-    accessorKey: "rank",
-    header: ({ column }) => (
-      <Button
-        variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      >
-        <div>Rank</div> <ArrowUpDown />
-      </Button>
-    ),
-    cell: ({ row }) => (
-      <div className="font-medium">{row.getValue("rank")}</div>
-    ),
-  },
-  {
-    accessorKey: "salary",
-    header: ({ column }) => (
-      <Button
-        variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      >
-        <div>salary</div> <ArrowUpDown />
-      </Button>
-    ),
-    cell: ({ row }) => (
-      <div className="font-medium">{row.getValue("salary")}</div>
-    ),
-  },
-
   {
     id: "actions",
     enableHiding: false,

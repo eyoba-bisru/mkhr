@@ -21,20 +21,7 @@ export default function AddGradePage() {
             <FieldGroup className="grid gap-4 grid-cols-2">
               <Field>
                 <FieldLabel htmlFor="grade">Grade Name</FieldLabel>
-                <Input id="grade" placeholder="I" required />
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="rank">Rank</FieldLabel>
-                <Input id="rank" placeholder="1" type="number" required />
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="salary">Salary</FieldLabel>
-                <Input
-                  id="salary"
-                  placeholder="15,000"
-                  type="number"
-                  required
-                />
+                <Input id="grade" placeholder="eg. I" required />
               </Field>
             </FieldGroup>
             <FieldGroup className="mt-4">
