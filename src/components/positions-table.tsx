@@ -34,53 +34,51 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const data: Payment[] = [
+const data: Position[] = [
   {
-    id: "m5gr84i9",
-    name: 316,
-    status: "success",
-    email: "ken99@example.com",
-    password: "password123",
+    id: "p1",
+    name: "Frontend Developer",
+    grade: "III",
+    rank: 10,
+    salary: 15000,
+    description: "Build and maintain UI components",
+    category: "IT",
+    is_active: true,
   },
   {
-    id: "3u1reuv4",
-    name: 242,
-    status: "success",
-    email: "Abe45@example.com",
-    password: "password123",
+    id: "p2",
+    name: "Backend Developer",
+    grade: "III",
+    rank: 9,
+    salary: 16000,
+    description: "API and service development",
+    category: "IT",
+    is_active: true,
   },
   {
-    id: "derv1ws0",
-    name: 837,
-    status: "processing",
-    email: "Monserrat44@example.com",
-    password: "password123",
-  },
-  {
-    id: "5kma53ae",
-    name: 874,
-    status: "success",
-    email: "Silas22@example.com",
-    password: "password123",
-  },
-  {
-    id: "bhqecj4p",
-    name: 721,
-    status: "failed",
-    email: "carmella@example.com",
-    password: "password123",
+    id: "p3",
+    name: "Support Engineer",
+    grade: "II",
+    rank: 7,
+    salary: 10000,
+    description: "Customer support and troubleshooting",
+    category: "LIMAT",
+    is_active: false,
   },
 ];
 
-export type Payment = {
+export type Position = {
   id: string;
-  name: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-  password: string;
+  name: string;
+  grade: string;
+  rank: number;
+  salary: number;
+  description?: string;
+  category?: string;
+  is_active?: boolean;
 };
 
-const columns: ColumnDef<Payment>[] = [
+const columns: ColumnDef<Position>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -105,43 +103,78 @@ const columns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: "name",
-    header: () => <div className="text-right">Name</div>,
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        <div>Position</div> <ArrowUpDown />
+      </Button>
+    ),
     cell: ({ row }) => (
-      <div className="text-right font-medium">{row.getValue("name")}</div>
+      <div className="font-medium">{row.getValue("name")}</div>
     ),
   },
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "grade",
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        <div>Grade</div> <ArrowUpDown />
+      </Button>
+    ),
+    cell: ({ row }) => <div>{row.getValue("grade")}</div>,
+  },
+  {
+    accessorKey: "rank",
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        <div>Rank</div> <ArrowUpDown />
+      </Button>
+    ),
+    cell: ({ row }) => <div className="text-right">{row.getValue("rank")}</div>,
+  },
+  {
+    accessorKey: "salary",
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        <div>Salary</div> <ArrowUpDown />
+      </Button>
+    ),
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="text-right">{row.getValue("salary")}</div>
     ),
   },
   {
-    accessorKey: "email",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <ArrowUpDown />
-        </Button>
-      );
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    accessorKey: "description",
+    header: "Description",
+    cell: ({ row }) => (
+      <div className="truncate max-w-xs">{row.getValue("description")}</div>
+    ),
   },
   {
-    accessorKey: "password",
-    header: "Password",
-    cell: ({ row }) => <div>{row.getValue("password")}</div>,
+    accessorKey: "category",
+    header: "Category",
+    cell: ({ row }) => <div>{row.getValue("category")}</div>,
+  },
+  {
+    accessorKey: "is_active",
+    header: "Active",
+    cell: ({ row }) => <div>{row.getValue("is_active") ? "Yes" : "No"}</div>,
   },
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original;
+      const position = row.original;
 
       return (
         <DropdownMenu>
@@ -154,13 +187,14 @@ const columns: ColumnDef<Payment>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+              onClick={() => navigator.clipboard.writeText(position.id)}
             >
-              Copy payment ID
+              Copy position ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem>View</DropdownMenuItem>
+            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem>Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -200,10 +234,10 @@ export function PositionsDataTable() {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter positions..."
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
