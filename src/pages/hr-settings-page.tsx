@@ -3,6 +3,7 @@ import { lazy } from "react";
 const BranchesPage = lazy(() => import("./branches-page.tsx"));
 const GradesPage = lazy(() => import("./grades-page.tsx"));
 const PostionPage = lazy(() => import("./position-page.tsx"));
+const ScalesPage = lazy(() => import("./scales-page.tsx"));
 
 export default function HRSettings() {
   return (
@@ -16,10 +17,12 @@ export default function HRSettings() {
           <TabsTrigger value="positions">Positions</TabsTrigger>
           <TabsTrigger value="grades">Grades</TabsTrigger>
           <TabsTrigger value="branches">Branches</TabsTrigger>
+          <TabsTrigger value="scales">Scales</TabsTrigger>
         </TabsList>
         <PostionPage />
         <GradesPage />
         <BranchesPage />
+        <ScalesPage />
       </Tabs>
     </div>
   );

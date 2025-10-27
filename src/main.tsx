@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { BrowserRouter, Route, Routes } from "react-router";
+const AddScalePage = lazy(() => import("./pages/add-scale.tsx"));
 const AddBranchPage = lazy(() => import("./pages/add-branch.tsx"));
 const AddPostionPage = lazy(() => import("./pages/add-position.tsx"));
 const HRSettings = lazy(() => import("./pages/hr-settings-page.tsx"));
@@ -26,6 +27,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="settings/add_position" element={<AddPostionPage />} />
             <Route path="settings/add_grade" element={<AddGradePage />} />
             <Route path="settings/add_branch" element={<AddBranchPage />} />
+            <Route path="settings/add_scale" element={<AddScalePage />} />
             <Route
               path="administration"
               element={<div>HR Administration Page</div>}
