@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { BrowserRouter, Route, Routes } from "react-router";
+const Dashboard = lazy(() => import("./pages/dashboard.tsx"));
 const AddScalePage = lazy(() => import("./pages/add-scale.tsx"));
 const AddBranchPage = lazy(() => import("./pages/add-branch.tsx"));
 const AddPostionPage = lazy(() => import("./pages/add-position.tsx"));
@@ -22,7 +23,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="login" element={<LoginPage />} />
         </Route>
         <Route element={<DashboardLayout />}>
-          <Route path="/dashboard" element={<div>Dashboard Page</div>} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/hr">
             <Route path="settings" element={<HRSettings />} />
             <Route path="settings/add_position" element={<AddPostionPage />} />
