@@ -14,7 +14,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 export function NavMain({
   items,
@@ -30,13 +30,20 @@ export function NavMain({
     }[];
   }[];
 }) {
+  const location = useLocation();
+  const path = location.pathname;
+  console.log(path);
+
   return (
     <SidebarGroup>
       <SidebarMenu>
         {items.map((item) => {
           if (!item.items) {
             return (
-              <SidebarMenuItem key={item.title}>
+              <SidebarMenuItem
+                className={path === item.url ? "bg-gray-300 rounded-sm" : ""}
+                key={item.title}
+              >
                 <SidebarMenuButton tooltip={item.title} asChild>
                   <Link to={item.url}>
                     {item.icon && <item.icon />}
@@ -65,7 +72,12 @@ export function NavMain({
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     {item.items?.map((subItem) => (
-                      <SidebarMenuSubItem key={subItem.title}>
+                      <SidebarMenuSubItem
+                        className={
+                          path === subItem.url ? "bg-gray-300 rounded-sm" : ""
+                        }
+                        key={subItem.title}
+                      >
                         <SidebarMenuSubButton asChild>
                           <Link to={subItem.url}>
                             <span>{subItem.title}</span>
